@@ -1,0 +1,106 @@
+:root {
+  --primary-color: #F9F1DC;
+  --secondary-color: #A2B2E0;
+  --tertiary-color: #858DA1;
+  --button-color: #2E3B61;
+}
+
+body {
+  color: var(--button-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: .0625rem;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a.button {
+  padding: .5rem 1rem;
+  border: 2px solid var(--button-color);
+  border-radius: 1.25rem;
+  color: var(--button-color);
+  font-weight: bold;
+}
+
+a.button:hover {
+  background-color: var(--button-color);
+  color: var(--primary-color);
+}
+
+button.button {
+  padding: .5rem 1rem;
+  border: 2px solid var(--button-color);
+  border-radius: 1.25rem;
+  color: var(--button-color);
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1500px;
+}
+
+.backgradient {
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.web-header {
+  background-color:var(--primary-color);
+  color: var(--button-color);
+
+  nav ul:first-of-type li:first-child{
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+  }
+
+  nav li a{
+    color: var(--button-color);
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  nav li a:hover{
+    transform: scale(1.05);
+  }
+}
+
+.web-footer {
+  background-color: var(--secondary-color);
+  color: var(--button-color);
+
+  input {
+    background-color: transparent;
+    border: 1px solid var(--button-color);
+  }
+
+  button {
+    background-color: transparent;
+  }
+
+  button:hover {
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  }
+}

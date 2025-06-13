@@ -1,0 +1,19 @@
+.background {
+  min-height: calc(100dvh - 228px);
+  background-color: var(--primary-color);
+
+  .section-form {
+    width: 34.375rem;
+
+    form label {
+      font-weight: bold;
+    }
+
+    form input {
+      border: none;
+      border-bottom: 2px solid var(--button-color);
+      background-color: transparent;
+      margin-block-end: 2rem;
+    }
+  }
+}

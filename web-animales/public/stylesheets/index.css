@@ -1,0 +1,32 @@
+:root {
+  --primary-color: #F9F1DC;
+  --secondary-color: #A2B2E0;
+  --tertiary-color: #858DA1;
+  --button-color: #2E3B61;
+}
+
+.section-welcome {
+  section {
+    padding-block: 3rem;
+  }
+}
+
+.section-owners {
+  .profile-card {
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    .profile-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .profile-card:hover {
+    transform: scale(1.03);
+    filter: brightness(0.9);
+    cursor: pointer;
+  }
+  
+}

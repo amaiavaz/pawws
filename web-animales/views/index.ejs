@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+    <title>Pawws</title>
+    <%- include('modules/globalLinks') %>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+  </head>
+
+  <body>
+    <%- include('modules/navbar') %>
+
+    <main>
+      <div class="backgradient">
+        <section class="section-welcome py-5">
+          <div class="container">
+            <section class="text-center">
+              <h1>Red social exclusiva para mascotas.</h1>
+              <p class="fs-5 my-4">Humanos bienvenidos... pero solo si traen croquetas.</p>
+              <a class="button" href="/pets">¡Haz amig@s!</a>
+              <div class="w-50 mx-auto py-5">
+                <img class="w-100 rounded-5 shadow" src="/images/assets/img01.jpg" alt="">
+              </div>
+            </section>
+          </div>
+        </section>
+        <section class="section-owners py-5">
+          <div class="container">
+            <div class="bg-white rounded-4 p-3">
+              <h2 class="mb-3">Nuestros humanos</h2>
+              <div class="row row-cols-1 row-cols-lg-4 justify-content-center gy-3">
+                <% result.forEach((elem) => { %>
+                
+                  <div class="col">
+                    <a href="/owners/oneOwner/<%=elem.owner_id %>" class="profile-card ">
+                      <article class="p-1 rounded-3 text-center">
+                        <div class="w-100">
+                          <img src="/images/owners/<%= elem.owner_img?elem.owner_img:'defaultImg.png' %>" alt="Perfil" class="profile-img">
+                        </div>
+                        <h3 class="mt-2"><%= elem.first_name %> <%= elem.last_name %></h3>
+                        <p class="w-75 m-auto"><%= elem.owner_description %></p>
+                      </article>
+                    </a>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <%- include('modules/footer') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+</html>

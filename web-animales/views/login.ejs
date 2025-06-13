@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+    <title>Pawws</title>
+    <%- include('modules/globalLinks') %>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+  </head>
+
+  <body>
+    <%-include('modules/navbar') %>
+
+      <main>
+        <div class="backgradient">
+          <div class="container">
+            <section class="section-form py-5">
+              <div class="row justify-content-around">
+                <div class="col-5">
+                  <section class="bg-white rounded-4 p-3 shadow-sm">
+                    <form action="/owners/login" method="post">
+                      <h2>Inicia sesión</h2>
+                      <div
+                        data-mdb-input-init
+                        class="form-outline mb-4"
+                      >
+                        <label
+                        class="form-label"
+                        for="email"
+                        >Email</label>
+                        <input
+                          type="text"
+                          id="email"
+                          class="form-control"
+                          name="email"
+                        />
+                      </div>
+                      
+                      <div
+                        data-mdb-input-init
+                        class="form-outline mb-4"
+                      >
+                        <label
+                          class="form-label"
+                          for="password"
+                        >Contraseña</label>
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control"
+                          name="password"
+                        />
+                      </div>
+                      <p class="error"><%= typeof message != 'undefined' ? message : null %></p>
+                      <button
+                        data-mdb-ripple-init
+                        class="btn btn-block mb-4 w-100 btn-sign"
+                      >Inicia sesión</button>
+                      <p class="text-center">¿No estás registrado? <a href="/owners/signup">Regístrate aquí</a></p>
+                    </form>
+                  </section>
+                </div>
+                <div class="col-5">
+                  <img class="w-100 rounded-4 shadow-sm" src="/images/assets/img06.jpg" alt="">
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <%- include('modules/footer') %>
+
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+          crossorigin="anonymous"
+        ></script>
+  </body>
+
+</html>

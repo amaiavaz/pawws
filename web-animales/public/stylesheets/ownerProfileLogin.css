@@ -1,0 +1,9 @@
+.background {
+  min-height: calc(100dvh - 228px);
+  background-color: var(--primary-color);
+
+  .section-owner img {
+    max-height: 31rem;
+    object-fit: cover;
+  }
+}
