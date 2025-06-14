@@ -3,9 +3,6 @@ var router = express.Router();
 const ownersControllers = require('../controllers/ownersControllers');
 const uploadImage = require('../middlewares/uploadImage');
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
 router.get('/signup', ownersControllers.renderSignup);
 
@@ -22,5 +19,7 @@ router.get('/oneOwner/:id', ownersControllers.oneOwner);
 router.get('/edit/:id', ownersControllers.renderEdit);
 
 router.post('/edit/:id', uploadImage("owners"), ownersControllers.edit);
+
+router.get('/deleteLogic/:id', ownersControllers.deleteLogic);
 
 module.exports = router;

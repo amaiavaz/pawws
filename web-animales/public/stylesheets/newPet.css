@@ -1,0 +1,24 @@
+.backgradient {
+  min-height: calc(100dvh - 228px);
+
+  form label {
+    font-weight: bold;
+    color: var(--button-color);
+  }
+
+  form .btn-sign {
+    background-color: var(--button-color);
+    color: #FFF;
+    font-weight: bold;
+  }
+
+  form p a {
+    color: var(--button-color);
+    text-decoration: underline;
+  }
+
+  img {
+    max-height: 35.75rem;
+    object-fit: cover;
+  }
+}

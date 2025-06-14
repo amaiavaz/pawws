@@ -42,6 +42,34 @@
             </section>
           </div>
         </section>
+
+        <section class="section-pets py-5">
+          <div class="container">
+            <div class="row row-cols-1 row-cols-lg-2 g-4">
+              <% resultFinal.pets.forEach((elem) => { %>
+                <div class="col">
+                  <div class="card mb-3 h-100" >
+                    <div class="row g-0 h-100">
+                      <div class="col-md-8">
+                        <img src="/images/pets/<%=elem.pet_img?elem.pet_img:'defaultImg.webp' %>" class="img-fluid rounded-start h-100 object-fit-cover" alt="">
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card-body">
+                          <h3 class="card-title"><%= elem.pet_name %></h3>
+                          <p class="card-text"><%= elem.pet_description %></p>
+                          <p class="card-text"><%= elem.species %></p>
+                          <p class="card-text mb-0"><small class="text-body-secondary">Año de adopción:</small></p>
+                          <p class="card-text"><small class="text-body-secondary"><%= elem.adoption_year %></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              <% }); %>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
 

@@ -113,24 +113,26 @@ class OwnersControllers {
               pet_description: elem.pet_description,
               adoption_year: elem.adoption_year,
               species: elem.species,
-              pet_img: elem.pet_img
+              pet_img: elem.pet_img,
+              owner_id: elem.owner_id
             };
             pets.push(pet);
           }
-
-          let resultFinal = {
-            owner_id: result[0].owner_id,
-            first_name: result[0].first_name,
-            last_name: result[0].last_name,
-            owner_description: result[0].owner_description,
-            phone_number: result[0].phone_number,
-            email: result[0].email,
-            owner_img: result[0].owner_img
-          };
-          console.log(resultFinal);
-          
-          res.render('ownerProfileLogin', {resultFinal});
         });
+
+        let resultFinal = {
+          owner_id: result[0].owner_id,
+          first_name: result[0].first_name,
+          last_name: result[0].last_name,
+          owner_description: result[0].owner_description,
+          phone_number: result[0].phone_number,
+          email: result[0].email,
+          owner_img: result[0].owner_img,
+          pets: pets
+        };
+        console.log(resultFinal);
+        
+        res.render('ownerProfileLogin', {resultFinal});
       }
     });
   }
@@ -155,24 +157,26 @@ class OwnersControllers {
               pet_description: elem.pet_description,
               adoption_year: elem.adoption_year,
               species: elem.species,
-              pet_img: elem.pet_img
+              pet_img: elem.pet_img,
+              owner_id: elem.owner_id
             };
             pets.push(pet);
           }
-
-          let resultFinal = {
-            owner_id: result[0].owner_id,
-            first_name: result[0].first_name,
-            last_name: result[0].last_name,
-            owner_description: result[0].owner_description,
-            phone_number: result[0].phone_number,
-            email: result[0].email,
-            owner_img: result[0].owner_img
-          };
-          console.log(resultFinal);
-          
-          res.render('ownerProfile', {resultFinal});
         });
+
+        let resultFinal = {
+          owner_id: result[0].owner_id,
+          first_name: result[0].first_name,
+          last_name: result[0].last_name,
+          owner_description: result[0].owner_description,
+          phone_number: result[0].phone_number,
+          email: result[0].email,
+          owner_img: result[0].owner_img,
+          pets: pets
+        };
+        console.log(resultFinal);
+        
+        res.render('ownerProfile', {resultFinal});
       }
     });
   }
@@ -197,21 +201,40 @@ class OwnersControllers {
     const { id } = req.params;
     const { first_name, last_name, owner_description, phone_number } = req.body;
 
-    let sql = "UPDATE owner SET first_name=?, last_name=?, owner_description=?, phone_number=? WHERE owner_id =? AND owner_is_deleted = 0";
-    let values = [first_name, last_name, owner_description, phone_number, id];
-
-    if (req.file){
-      let {filename} = req.file;
-      sql = "UPDATE owner SET first_name=?, last_name=?, owner_description=?, phone_number=?, owner_img=? WHERE owner_id =? AND owner_is_deleted = 0";
-      values = [first_name, last_name, owner_description, phone_number, filename, id];
+    if (!first_name || !last_name || !owner_description || !phone_number){
+      res.redirect(`/owners/edit/${id}`);
     }
-    
-    connection.query(sql, values, (err, result) => {
+    else {
+      let sql = "UPDATE owner SET first_name=?, last_name=?, owner_description=?, phone_number=? WHERE owner_id =? AND owner_is_deleted = 0";
+      let values = [first_name, last_name, owner_description, phone_number, id];
+  
+      if (req.file){
+        let {filename} = req.file;
+        sql = "UPDATE owner SET first_name=?, last_name=?, owner_description=?, phone_number=?, owner_img=? WHERE owner_id =? AND owner_is_deleted = 0";
+        values = [first_name, last_name, owner_description, phone_number, filename, id];
+      }
+      
+      connection.query(sql, values, (err, result) => {
+        if (err){
+          throw err;
+        }
+        else {
+          res.redirect(`/owners/oneOwnerLogin/${id}`);
+        }
+      });
+    }
+  }
+
+  deleteLogic = (req, res) => {
+    const { id } = req.params;
+    let sql = "UPDATE owner LEFT JOIN pet ON owner.owner_id = pet.owner_id SET owner.owner_is_deleted = 1, pet.pet_is_deleted = 1 WHERE owner.owner_id=?";
+
+    connection.query(sql, [id], (err, result) => {
       if (err){
         throw err;
       }
       else {
-        res.redirect(`/owners/oneOwnerLogin/${id}`);
+        res.redirect('/');
       }
     });
   }
