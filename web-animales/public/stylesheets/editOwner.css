@@ -3,7 +3,7 @@
   background-color: var(--primary-color);
 
   .section-form {
-    width: 34.375rem;
+    max-width: 34.375rem;
 
     form label {
       font-weight: bold;
@@ -14,6 +14,11 @@
       border-bottom: 2px solid var(--button-color);
       background-color: transparent;
       margin-block-end: 2rem;
+    }
+
+    button.button:hover {
+      background-color: var(--button-color);
+      color: var(--primary-color);
     }
   }
 }

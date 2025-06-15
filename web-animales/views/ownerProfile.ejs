@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
   <head>
     <meta charset="utf-8">
@@ -21,12 +21,12 @@
           <div class="container">
             <section>
               <div class="row justify-content-center">
-                <div class="col-3">
+                <div class="col-9 col-md-5 col-lg-4">
                   <div>
                     <img class="w-100 rounded-4" src="/images/owners/<%= resultFinal.owner_img?resultFinal.owner_img:'defaultImg.png' %>" alt="Perfil">
                   </div>
                 </div>
-                <div class="col-3 d-flex flex-column justify-content-around">
+                <div class="col-9 col-md-5 col-lg-4 d-flex flex-column justify-content-around">
                   <div class="p-3">
                     <p class="fw-bold mb-0">Nombre:</p>
                     <h3><%= resultFinal.first_name %> <%= resultFinal.last_name %></h3>
@@ -42,24 +42,26 @@
             </section>
           </div>
         </section>
-
+        <div class="container">
+          <div class="divisor-line"></div>
+        </div>
         <section class="section-pets py-5">
           <div class="container">
-            <div class="row row-cols-1 row-cols-lg-2 g-4">
+            <div class="row g-4 justify-content-center justify-content-lg-start">
               <% resultFinal.pets.forEach((elem) => { %>
-                <div class="col">
+                <div class="col-10  col-lg-6">
                   <div class="card mb-3 h-100" >
                     <div class="row g-0 h-100">
                       <div class="col-md-8">
-                        <img src="/images/pets/<%=elem.pet_img?elem.pet_img:'defaultImg.webp' %>" class="img-fluid rounded-start h-100 object-fit-cover" alt="">
+                        <img src="/images/pets/<%=elem.pet_img?elem.pet_img:'defaultImg.webp' %>" class="img-fluid rounded-4 h-100 object-fit-cover" alt="">
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-4 d-flex align-items-center">
                         <div class="card-body">
                           <h3 class="card-title"><%= elem.pet_name %></h3>
                           <p class="card-text"><%= elem.pet_description %></p>
                           <p class="card-text"><%= elem.species %></p>
                           <p class="card-text mb-0"><small class="text-body-secondary">Año de adopción:</small></p>
-                          <p class="card-text"><small class="text-body-secondary"><%= elem.adoption_year %></small></p>
+                          <p class="card-text"><%= elem.adoption_year %></p>
                         </div>
                       </div>
                     </div>

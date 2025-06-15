@@ -9,7 +9,21 @@ class PetsControllers {
         throw err;
       }
       else {
-        res.render('allPets');
+        res.render('allPets', {result});
+      }
+    });
+  }
+
+  onePet = (req, res) => {
+    const { pet_id } = req.params;
+    let sql = "SELECT * FROM pet WHERE pet_id=? AND pet_is_deleted = 0";
+
+    connection.query(sql, [pet_id], (err, result) => {
+      if (err){
+        throw err;
+      }
+      else{
+        res.render('petProfile', {result: result[0]});
       }
     });
   }
@@ -110,6 +124,50 @@ class PetsControllers {
         res.redirect(`/owners/oneOwnerLogin/${owner_id}`);
       }
     });
+  }
+
+  renderSelect = (req, res) => {
+    let sql = "SELECT owner_id, first_name, last_name FROM owner WHERE owner_is_deleted = 0";
+
+    connection.query(sql, (err, result) => {
+      if (err){
+        throw err;
+      }
+      else {
+        res.render('newPetSelect', {result});
+      }
+    });
+  }
+
+  newPetSelect = (req, res) => {
+    console.log(req.body);
+    const { pet_name, pet_description, adoption_year, species, owner_id } = req.body;
+    const regex = /^(19[5-9][0-9]|20[0-9]{2}|2100)$/;
+
+    if (!pet_name || !pet_description || !adoption_year || !species || !owner_id){
+      res.redirect(`/pets/newPetSelect`);
+    }
+    else if (!regex.test(adoption_year)){
+      res.redirect(`/pets/newPetSelect`);
+    }
+    else {
+      let sql = "INSERT INTO pet (pet_name, pet_description, adoption_year, species, owner_id) VALUES (?, ?, ?, ?, ?)";
+      let values  = [pet_name, pet_description, adoption_year, species, owner_id];
+      
+      if (req.file){
+        sql = "INSERT INTO pet (pet_name, pet_description, adoption_year, species, owner_id, pet_img) VALUES (?, ?, ?, ?, ?, ?)";
+        values.push(req.file.filename);
+      }
+
+      connection.query(sql, values, (err, result) => {
+        if(err){
+          throw err;
+        }
+        else {
+          res.redirect("/pets/allPets");
+        }
+      });
+    }
   }
 }
 

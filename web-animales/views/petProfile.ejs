@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+    <title>Pawws</title>
+    <%- include('modules/globalLinks') %>
+    <link rel="stylesheet" href="/stylesheets/ownerProfileLogin.css">
+  </head>
+
+  <body>
+    <%- include('modules/navbar') %>
+
+    <main>
+      <div class="background">
+        <section class="py-5 section-owner">
+          <div class="container">
+            <section>
+              <div class="row justify-content-center">
+                <div class="col-10 col-md-7 col-lg-6">
+                  <div>
+                    <img class="w-100 rounded-4 shadow-sm" src="/images/pets/<%= result.pet_img?result.pet_img:'defaultImg.webp' %>" alt="Perfil">
+                  </div>
+                </div>
+                <div class="col-10 col-md-4 col-lg-3 d-flex flex-column justify-content-around">
+                  <div class="p-3">
+                    <p class="fw-bold mb-0">Nombre:</p>
+                    <h3><%= result.pet_name %> </h3>
+                    <p class="fw-bold mb-0">Descripción:</p>
+                    <p><%= result.pet_description %></p>
+                    <p class="fw-bold mb-0">Especie:</p>
+                    <p><%= result.species %></p>
+                    <p class="fw-bold mb-0">Año de adopción:</p>
+                    <p><%= result.adoption_year %></p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <%- include('modules/footer') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+</html>

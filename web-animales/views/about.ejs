@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+
+  <head>
+    <meta charset="utf-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    >
+    <title>Pawws</title>
+    <%- include('modules/globalLinks') %>
+  </head>
+
+  <body>
+    <%- include('modules/navbar') %>
+    
+    <main>
+      <div class="backgradient">
+        <section class="py-5">
+          <div class="container">
+            <div class="row gy-5 justify-content-center justify-content-lg-around">
+              <div class="col-9 col-lg-4">
+                <div id="carouselExample" class="carousel slide">
+                  <div class="carousel-inner">
+                    <% result.forEach((elem, index)=> { %>
+                    <div class="carousel-item <%= index == 0? 'active' : ''%>">
+                      <img src="/images/owners/<%=elem.owner_img?elem.owner_img:'defaultImg.png'%>" class="d-block w-100 rounded-4" alt="Fotos humanos">
+                    </div>
+                    <% }); %>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6 col-xl-5">
+                <section class="px-2 px-md-4">
+                  <h2>Sobre nuestra comunidad</h2>
+                  <p>¡Bienvenido a la única <strong>red social</strong> donde las patas mandan!</p>
+                  <p>¿Cansado de ver fotos de tu humano en lugares aburridos? ¿Harto de que no entiendan lo mucho que necesitas chuches? ¡Pues has llegado al lugar correcto!</p>
+                  <p>Aquí, en <span class="pawws">PAWWS</span>, somos la comunidad definitiva para animales de cuatro (o dos, o ninguna) patas, plumas y escamas. Pero no hagáis el drama Karen, Karencio... os seguimos necesitando para teclear.</p>
+                  <h3 class="mt-4">¿Qué puedes hacer aquí?</h3>
+                  <p>Comparte <strong>tus aventuras</strong>. Desde siestas épicas hasta ese escondite de croquetas que conseguiste encontrar.</p>
+                  <p>Conoce nuevos <strong>amigos</strong>. Encuentra a ese perrete con el que compartes obsesión por las pelotas, o a ese caballo con el que poder echar carreras".</p>
+                  <p>Chismorrea sobre tus humanos. ¿Quién dejó la puerta del frigorífico abierta? ¿Quién se comió ese trozo de queso que se cayó? ¡Es el lugar perfecto para contarlo!</p>
+
+                  <p class="mt-5 fw-bold">¡Sabemos que puedes convencer a tu humano para <a href="/owners/signup" class="text-decoration-underline">registrarse</a>!</p>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <%- include('modules/footer') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+</html>

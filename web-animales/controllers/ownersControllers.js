@@ -37,7 +37,7 @@ class OwnersControllers {
               }
             }
             else {
-              res.send('registro ok');
+              res.render('signupOk');
             }
           });
         }

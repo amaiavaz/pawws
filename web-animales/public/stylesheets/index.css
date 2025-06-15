@@ -1,19 +1,25 @@
-:root {
-  --primary-color: #F9F1DC;
-  --secondary-color: #A2B2E0;
-  --tertiary-color: #858DA1;
-  --button-color: #2E3B61;
-}
 
 .section-welcome {
   section {
     padding-block: 3rem;
+
+    @media (width >= 768px) {
+      .w-md-75 {
+        width: 75% !important;
+      }
+    }
+
+    @media (width >= 992px) {
+      .w-lg-50 {
+        width: 50% !important;
+      }
+    }
   }
 }
 
 .section-owners {
   .profile-card {
-    transition: transform 0.2s ease, filter 0.2s ease;
+    transition: filter 0.2s ease;
 
     .profile-img {
       width: 100%;
@@ -24,8 +30,7 @@
   }
 
   .profile-card:hover {
-    transform: scale(1.03);
-    filter: brightness(0.9);
+    filter: brightness(0.85);
     cursor: pointer;
   }
   
