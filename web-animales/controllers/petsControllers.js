@@ -179,6 +179,29 @@ class PetsControllers {
     }
   }
 
+  search = (req, res) => {
+    console.log(req.body);
+    const { search } = req.body;
+    let sql = "SELECT * FROM pet WHERE pet_is_deleted = 0";
+
+    connection.query(sql, (err, result) => {
+      if (result.length == 0){
+        res.render('allPets', {message: "No se encuentran coincidencias"});
+      }
+      else {
+        if (err){
+          throw err;
+        }
+        else {
+          console.log(result);
+          
+          let resFiltered = result.filter((pet) => 
+            pet.species.toLowerCase().includes(search.toLowerCase()));
+          res.render('allPets', {result: resFiltered});
+        }
+      }
+    });
+  }
 }
 
 module.exports = new PetsControllers();

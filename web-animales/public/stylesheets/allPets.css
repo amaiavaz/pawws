@@ -1,11 +1,35 @@
-a article {
-  transition: transform 0.3s ease;
+.backgradient {
+  min-height: calc(100dvh - 228px);
+
+  input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--button-color);
+    border-radius: 0;
+  }
+
+  input:focus {
+    background-color: transparent;
+    border-bottom: 2px solid var(--button-color);
+    box-shadow: none;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+
+  a article {
+    transition: transform 0.3s ease;
+
+    img {
+      aspect-ratio: 1.45/1;
+    }
+  }
+  
+  a:hover article {
+    transform: scale(0.95);
+  }
+
 }
 
-a:hover article {
-  transform: scale(0.95);
-}
-
-section img {
-  aspect-ratio: 1.45/1;
-}

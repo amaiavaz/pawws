@@ -21,5 +21,6 @@ router.get('/newPetSelect', petsControllers.renderSelect);
 
 router.post('/newPetSelect', uploadImage("pets"), petsControllers.newPetSelect);
 
+router.post('/search', petsControllers.search);
 
 module.exports = router;

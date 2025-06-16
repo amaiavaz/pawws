@@ -20,7 +20,24 @@
         <div class="container">
           <section>
             <h2 class="text-center mb-4">Los integrantes</h2>
-            
+            <div class="d-flex">
+              <form
+                class="d-flex w-100"
+                role="search"
+                action="/pets/search"
+                method="post"
+              >
+                <button class="fw-bold" type="submit">Buscar</button>
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Buscar especie"
+                  aria-label="Search"
+                  name="search"
+                />
+              </form>
+            </div>
+            <p class="fw-bold text-center"><%= typeof message != 'undefined' ? message : null %></p>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-center g-3 g-lg-2">
               <% result.forEach((elem) => { %>
               <div class="col">
