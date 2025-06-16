@@ -1,4 +1,5 @@
 const connection = require("../config/db");
+const deleteFile = require("../utils/deleteFiles");
 
 class PetsControllers {
   allPets = (req, res) => {
@@ -40,6 +41,10 @@ class PetsControllers {
     const regex = /^(19[5-9][0-9]|20[0-9]{2}|2100)$/;
 
     if (!pet_name || !pet_description || !adoption_year || !species){
+      if (req.file){
+        deleteFile(req.file.filename, "pets");
+      }
+
       res.redirect(`/pets/newPet/${id}`);
     }
     else if (!regex.test(adoption_year)){
@@ -145,6 +150,10 @@ class PetsControllers {
     const regex = /^(19[5-9][0-9]|20[0-9]{2}|2100)$/;
 
     if (!pet_name || !pet_description || !adoption_year || !species || !owner_id){
+      if (req.file){
+        deleteFile(req.file.filename, "pets");
+      }
+
       res.redirect(`/pets/newPetSelect`);
     }
     else if (!regex.test(adoption_year)){
@@ -169,6 +178,7 @@ class PetsControllers {
       });
     }
   }
+
 }
 
 module.exports = new PetsControllers();
