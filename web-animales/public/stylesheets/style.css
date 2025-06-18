@@ -94,7 +94,7 @@ button.button {
     font-size: 2rem;
   }
 
-  @media (width <= 576px){
+  @media (width <= 992px){
     nav li a.button {
       font-size: .8rem;
     }

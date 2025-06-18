@@ -193,8 +193,7 @@ class PetsControllers {
           throw err;
         }
         else {
-          console.log(result);
-          
+          //console.log(result);
           let resFiltered = result.filter((pet) => 
             pet.species.toLowerCase().includes(search.toLowerCase()));
           res.render('allPets', {result: resFiltered});

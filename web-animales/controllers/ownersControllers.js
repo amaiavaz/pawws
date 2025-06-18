@@ -130,7 +130,7 @@ class OwnersControllers {
           owner_img: result[0].owner_img,
           pets: pets
         };
-        console.log(resultFinal);
+        //console.log(resultFinal);
         
         res.render('ownerProfileLogin', {resultFinal});
       }
@@ -174,7 +174,7 @@ class OwnersControllers {
           owner_img: result[0].owner_img,
           pets: pets
         };
-        console.log(resultFinal);
+        //console.log(resultFinal);
         
         res.render('ownerProfile', {resultFinal});
       }

@@ -14,13 +14,20 @@ CREATE TABLE owner(
 );
 
 CREATE TABLE pet(
-	pet_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	pet_id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     owner_id INT UNSIGNED NOT NULL,
     pet_name VARCHAR(70) NOT NULL,
     pet_description VARCHAR(200) NOT NULL,
     adoption_year YEAR NOT NULL,
     species VARCHAR(50) NOT NULL,
     pet_img VARCHAR(100),
+    pet_is_deleted BOOLEAN NOT NULL DEFAULT 0,
 		CONSTRAINT fk_id_owner FOREIGN KEY (owner_id)
 		REFERENCES owner(owner_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+SELECT * FROM owner;
+
+SELECT * FROM pet;
+
+ALTER TABLE pet ADD COLUMN pet_is_deleted BOOLEAN NOT NULL DEFAULT 0;
